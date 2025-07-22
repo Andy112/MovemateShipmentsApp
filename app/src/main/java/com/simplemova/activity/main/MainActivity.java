@@ -116,7 +116,7 @@ public class MainActivity extends BaseActivity {
                         Intent intent = new Intent(MainActivity.this, targetActivity);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent, options.toBundle());
-                        mHandler.postDelayed(() -> slideOutBottomContainer(), 100);
+//                        mHandler.post(() -> slideOutBottomContainer());
                     }, LAUNCH_DELAY_MS);
                 }
             }
@@ -138,8 +138,9 @@ public class MainActivity extends BaseActivity {
         slideInBottomContainer();
         mHandler.postDelayed(() -> {
             mTabLayout.getTabAt(0).select();
-            mAvailableVehiclesAdapter.refreshAdapter(DummyDataGenerator.getAvailableVehicles());
+
         }, LAUNCH_DELAY_MS);
+        mAvailableVehiclesAdapter.refreshAdapter(DummyDataGenerator.getAvailableVehicles());
 
     }
 
@@ -205,7 +206,7 @@ public class MainActivity extends BaseActivity {
         mBottomTabContainer.animate()
                 .translationY(mBottomTabContainer.getHeight())
                 .alpha(0f)
-                .setDuration(500)
+                .setDuration(400)
                 .setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
@@ -234,7 +235,6 @@ public class MainActivity extends BaseActivity {
                 .start();
 
         long contentStartDelay = ENTER_DURATION + 150;
-
         mContentLayoutContainer.animate()
                 .alpha(1f)
                 .setDuration(ENTER_DURATION)

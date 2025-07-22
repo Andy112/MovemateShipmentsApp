@@ -85,8 +85,8 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
         v.animate()
                 .alpha(1f)
                 .translationY(0f)
-                .setDuration(RECYCLER_VIEW_STAGGER_DELAY)
-                .setStartDelay(position * RECYCLER_VIEW_ANIM_DURATION)
+                .setDuration(RECYCLER_VIEW_ANIM_DURATION)
+                .setStartDelay(position * RECYCLER_VIEW_STAGGER_DELAY)
                 .start();
     }
 }

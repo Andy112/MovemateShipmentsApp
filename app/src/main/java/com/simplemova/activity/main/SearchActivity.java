@@ -41,7 +41,7 @@ public class SearchActivity extends BaseActivity {
         initSearchAdapter();
         initSearchEditTextListener();
         registerSharedElementTransitionListener(this::refreshAdapter);
-//        showSoftInputKeyboard();
+        showSoftInputKeyboard();
     }
 
     private void initWidgets() {
@@ -73,11 +73,6 @@ public class SearchActivity extends BaseActivity {
         if (imm != null) {
             imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
         }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
     }
 
     private void refreshAdapter() {
