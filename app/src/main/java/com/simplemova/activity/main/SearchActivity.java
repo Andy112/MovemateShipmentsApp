@@ -38,10 +38,10 @@ public class SearchActivity extends BaseActivity {
         setContentView(R.layout.activity_search);
         setOnApplyWindowInsetsListener();
         initWidgets();
-        initSharedElementTransitionListener();
         initSearchAdapter();
         initSearchEditTextListener();
-        showSoftInputKeyboard();
+        registerSharedElementTransitionListener(this::refreshAdapter);
+//        showSoftInputKeyboard();
     }
 
     private void initWidgets() {
@@ -67,25 +67,6 @@ public class SearchActivity extends BaseActivity {
         });
     }
 
-    private void initSharedElementTransitionListener() {
-        Transition sharedElementEnterTransition = getWindow().getSharedElementEnterTransition();
-        if (sharedElementEnterTransition != null) {
-            sharedElementEnterTransition.addListener(new Transition.TransitionListener() {
-                public void onTransitionStart(Transition transition) {}
-                public void onTransitionPause(Transition transition) {}
-                public void onTransitionResume(Transition transition) {}
-                public void onTransitionEnd(Transition transition) {
-                    transition.removeListener(this);
-                    refreshAdapter();
-                }
-                public void onTransitionCancel(Transition transition) {
-                    transition.removeListener(this);
-                    refreshAdapter();
-                }
-            });
-        } else refreshAdapter();
-    }
-
     private void showSoftInputKeyboard() {
         mEtSearch.requestFocus();
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -97,12 +78,6 @@ public class SearchActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-    }
-
-    @SuppressLint("MissingSuperCall")
-    @Override
-    public void onBackPressed() {
-        supportFinishAfterTransition();
     }
 
     private void refreshAdapter() {

@@ -1,6 +1,5 @@
 package com.simplemova.activity.main;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -9,7 +8,6 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
-import com.google.android.material.textview.MaterialTextView;
 import com.simplemova.R;
 import com.simplemova.activity.extra.BaseActivity;
 
@@ -24,7 +22,7 @@ public class CalculateActivity extends BaseActivity {
         setContentView(R.layout.activity_calculate);
         setOnApplyWindowInsetsListener();
         initWidgets();
-        animateChipsFromRight();
+        super.registerSharedElementTransitionListener(this::animateChipsFromRight);
     }
 
     private void initWidgets() {
@@ -46,8 +44,8 @@ public class CalculateActivity extends BaseActivity {
 
     private void animateChipsFromRight() {
         mChipGroupCategories.postDelayed(() -> {
-            final long ANIM_DURATION = 300;
-            final long STAGGER_DELAY = 80;
+            final long ANIM_DURATION = 600;
+            final long STAGGER_DELAY = 15;
 
             for (int i = 0; i < mChipGroupCategories.getChildCount(); i++) {
                 View child = mChipGroupCategories.getChildAt(i);
@@ -61,6 +59,6 @@ public class CalculateActivity extends BaseActivity {
                             .start();
                 }
             }
-        }, 200);
+        }, 500);
     }
 }

@@ -37,7 +37,7 @@ public class ShipmentActivity extends BaseActivity {
         setOnApplyWindowInsetsListener();
         initWidgets();
         initTabLayout();
-        initShipmentHistoryAdapter();
+        super.registerSharedElementTransitionListener(this::initShipmentHistoryAdapter);
     }
 
     private void initWidgets() {
@@ -48,7 +48,7 @@ public class ShipmentActivity extends BaseActivity {
     private void initShipmentHistoryAdapter() {
         mShipmentHistoryAdapter = new ShipmentHistoryAdapter();
         mShipmentRv.createRvAnimated(mShipmentHistoryAdapter, false);
-        refreshAdapter(getString(R.string.all));
+        mShipmentRv.postDelayed(() -> refreshAdapter(getString(R.string.all)), 500);
     }
 
     private void initTabLayout() {

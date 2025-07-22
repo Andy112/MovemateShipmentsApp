@@ -1,13 +1,12 @@
 package com.simplemova.activity.extra;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Transition;
 import android.view.View;
-import android.widget.TextView;
 
-import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -15,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.textview.MaterialTextView;
 import com.simplemova.R;
+import com.simplemova.iface.ISharedElementTransitionListener;
 
 public class BaseActivity extends AppCompatActivity {
 
@@ -46,11 +46,11 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void setOnApplyWindowInsetsListener() {
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.layout_root), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.layout_root), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
     }
 
     private void setupAppbarTitle(String title) {
@@ -63,16 +63,41 @@ public class BaseActivity extends AppCompatActivity {
     private void setupBackButton() {
         View backBtn = findViewById(R.id.btn_back);
         if (backBtn != null) {
-            backBtn.setOnClickListener(v -> onBackPressed());
-//            animateFromLeft(backBtn);
+            backBtn.setOnClickListener(v -> super.onBackPressed());
+//            animateBackBtnFromLeftToRight(backBtn);
         }
+    }
+
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onBackPressed() {
+        supportFinishAfterTransition();
     }
 
     protected void startActivity(Class<?> clazz) {
         startActivity(new Intent(this, clazz));
     }
 
-    private void animateFromLeft(View v) {
+    protected void registerSharedElementTransitionListener(ISharedElementTransitionListener listener) {
+        Transition sharedElementEnterTransition = getWindow().getSharedElementEnterTransition();
+        if (sharedElementEnterTransition != null) {
+            sharedElementEnterTransition.addListener(new Transition.TransitionListener() {
+                public void onTransitionStart(Transition transition) {}
+                public void onTransitionPause(Transition transition) {}
+                public void onTransitionResume(Transition transition) {}
+                public void onTransitionEnd(Transition transition) {
+                    transition.removeListener(this);
+                    listener.onTransitionEnded();
+                }
+                public void onTransitionCancel(Transition transition) {
+                    transition.removeListener(this);
+                    listener.onTransitionEnded();
+                }
+            });
+        } else listener.onTransitionEnded();
+    }
+
+    private void animateBackBtnFromLeftToRight(View v) {
         v.setAlpha(0f);
         v.setTranslationX(-1000f);
         v.animate()

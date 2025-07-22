@@ -17,7 +17,6 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textview.MaterialTextView;
 import com.simplemova.R;
 import com.simplemova.activity.extra.BaseActivity;
-import com.simplemova.util.Util;
 
 import java.util.Random;
 

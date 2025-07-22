@@ -65,7 +65,6 @@ public class MainActivity extends BaseActivity {
         initWidgets();
         initTabLayout();
         initAvailableVehiclesAdapter();
-        setBodyContainerBottomPadding();
         runAnimateEnter();
     }
 
@@ -117,6 +116,7 @@ public class MainActivity extends BaseActivity {
                         Intent intent = new Intent(MainActivity.this, targetActivity);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent, options.toBundle());
+                        mHandler.postDelayed(() -> slideOutBottomContainer(), 100);
                     }, LAUNCH_DELAY_MS);
                 }
             }
@@ -135,8 +135,12 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        mHandler.postDelayed(() -> mTabLayout.getTabAt(0).select(), LAUNCH_DELAY_MS);
-        mAvailableVehiclesAdapter.refreshAdapter(DummyDataGenerator.getAvailableVehicles());
+        slideInBottomContainer();
+        mHandler.postDelayed(() -> {
+            mTabLayout.getTabAt(0).select();
+            mAvailableVehiclesAdapter.refreshAdapter(DummyDataGenerator.getAvailableVehicles());
+        }, LAUNCH_DELAY_MS);
+
     }
 
     private void setBodyContainerBottomPadding() {
@@ -186,6 +190,33 @@ public class MainActivity extends BaseActivity {
                  startActivity(intent, options.toBundle());
     }
 
+    private void slideInBottomContainer() {
+        if (mBottomTabContainer.getAlpha() < 1) {
+            mBottomTabContainer.animate()
+                    .translationY(0)
+                    .alpha(1f)
+                    .setDuration(ENTER_DURATION)
+                    .setStartDelay(0)
+                    .start();
+        }
+    }
+
+    private void slideOutBottomContainer() {
+        mBottomTabContainer.animate()
+                .translationY(mBottomTabContainer.getHeight())
+                .alpha(0f)
+                .setDuration(500)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                    }
+                })
+                .start();
+    }
+
+
+
     private void animateEnter() {
         // Animate AppBar: Slide down and fade in
 //        appbar.animate()
@@ -199,22 +230,29 @@ public class MainActivity extends BaseActivity {
                 .translationY(0)
                 .alpha(1f)
                 .setDuration(ENTER_DURATION)
-                .setStartDelay(0) // Start immediately
+                .setStartDelay(0)
                 .start();
 
         long contentStartDelay = ENTER_DURATION + 150;
-        // Animate Content (Middle Section): Fade in
+
         mContentLayoutContainer.animate()
                 .alpha(1f)
                 .setDuration(ENTER_DURATION)
                 .setStartDelay(contentStartDelay)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        setBodyContainerBottomPadding();
+                    }
+                })
                 .start();
 
         mBottomTabContainer.animate()
                 .translationY(0)
                 .alpha(1f)
                 .setDuration(ENTER_DURATION)
-                .setStartDelay(0) // Start immediately
+                .setStartDelay(0)
                 .start();
     }
 
@@ -260,7 +298,6 @@ public class MainActivity extends BaseActivity {
                     public void onAnimationEnd(Animator animation) {
                         super.onAnimationEnd(animation);
                         MainActivity.super.finish();
-
                     }
                 })
                 .start();
