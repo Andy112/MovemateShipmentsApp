@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_margin_22dp">22dp</dimen>
+    <dimen name="card_margin_16dp">16dp</dimen>
+    <dimen name="card_margin_12dp">12dp</dimen>
+    <dimen name="card_margin_10dp">10dp</dimen>
+    <dimen name="card_margin_6dp">6dp</dimen>
+    <dimen name="card_elevation_0_5dp">0.2dp</dimen>
+    <dimen name="card_corner_radius_24dp">24dp</dimen>
+    <dimen name="card_corner_radius_16dp">16dp</dimen>
+    <dimen name="card_corner_radius_8dp">8dp</dimen>
+    <dimen name="card_view_body_padding_12dp">12dp</dimen>
+    <dimen name="card_view_body_padding_16dp">16dp</dimen>
+
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_medium">16dp</dimen>
+    <dimen name="spacing_large">24dp</dimen>
+    <dimen name="spacing_xlarge">32dp</dimen>
+    <dimen name="icon_size_small">50dp</dimen>
+    <dimen name="icon_size_large">150dp</dimen>
+    <dimen name="primary_text_size">15sp</dimen>
+    <dimen name="secondary_text_size">13sp</dimen>
+    <dimen name="app_bar_padding_16dp">16dp</dimen>
+    <dimen name="app_bar_icon_24dp">24dp</dimen>
+    <dimen name="back_arrow_margin_12dp">12dp</dimen>
+    <dimen name="recycler_view_padding_12dp">12dp</dimen>
+    <dimen name="custom_item_padding_12dp">12dp</dimen>
+    <dimen name="icon_margin_12dp">12dp</dimen>
+    <dimen name="section_title_text_margin_12dp">12dp</dimen>
+    <dimen name="section_title_text_margin_6dp">6dp</dimen>
+    <dimen name="chip_group_margin_12dp">12dp</dimen>
+    <dimen name="icon_padding_8dp">8dp</dimen>
+    <dimen name="badge_padding_6dp">6dp</dimen>
+    <dimen name="tab_title_margin_to_badge_6dp">6dp</dimen>
+    <dimen name="tab_title_size">12sp</dimen>
+    <dimen name="recycler_view_padding_6dp">6dp</dimen>
+    <dimen name="card_view_body_padding_6dp">6dp</dimen>
+    <dimen name="icon_padding_6dp">6dp</dimen>
+    <dimen name="divider_height">0.1dp</dimen>
+    <dimen name="text_padding_10dp">10dp</dimen>
+    <dimen name="text_padding_12dp">12dp</dimen>
+</resources>

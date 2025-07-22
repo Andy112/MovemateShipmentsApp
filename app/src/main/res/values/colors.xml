@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!--    foundation colors-->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+<!--    <color name="unselect_navigations">#673AB7</color>-->
+<!--    <color name="unselect_navigationss">#7C4DFF</color>-->
+    <color name="colorPrimary">#4A3391</color>
+    <color name="colorPrimaryDark">#412D81</color>
+    <color name="colorOnPrimary">@color/white</color>
+    <color name="colorAccent">#5431C3</color>
+    <color name="colorSecondaryDark">#412D81</color>
+    <color name="colorPrimaryBackground">@color/background</color>
+    <color name="colorSecondaryBackground">@color/white</color>
+    <color name="colorPrimaryText">@color/dark_grey</color>
+    <color name="colorPrimaryIcon">@color/dark_grey</color>
+    <color name="colorSecondaryText">@color/subtitle</color>
+
+<!--    widget colors-->
+    <color name="background">#F8F7F7</color>
+    <color name="rv_background">#FDFBFB</color>
+    <color name="image_bg_color">#E2E1E1</color>
+    <color name="text_shadow_color">@color/dark_grey</color>
+    <color name="subtitle">#757575</color>
+    <color name="toolbar_subtitle">@color/subtitle</color>
+    <color name="add_stop_btn">#E98102</color>
+
+    <color name="status_in_progress">#02AB95</color>
+    <color name="status_completed">#808080</color>
+    <color name="status_pending">#E9962F</color>
+    <color name="status_loading">#1F84AF</color>
+    <color name="status_cancelled">#FD7A7A</color>
+
+<!--    literal colors-->
+    <color name="dark_grey">#181818</color>
+    <color name="tab_unselected_on_light_bg">#808080</color>
+    <color name="tab_unselected_on_dark_bg">#BABABA</color>
+    <color name="grey">#878787</color>
+    <color name="light_grey">#AFAFAF</color>
+    <color name="divider_color">#D3D3D3</color>
+    <color name="sienna">#EB6460</color>
+    <color name="transparent">#00000000</color>
+    <color name="confirm_green">#01A091</color>
+    <color name="green_dot">#4CAF50</color>
+<!--    <color name="button_orange">#FF8103</color>-->
+<!--    <color name="button_orange">#FF8C00</color>-->
+<!--    <color name="button_orange">#FF8A00</color>-->
+    <color name="button_orange">#F78523</color>
+<!--    <color name="button_orange">#F44336</color>-->
+<!--    <color name="button_orange">#2196F3</color>-->
+
+<!--    <color name="select_navigation">#FF8C00</color>-->
+<!--    <color name="unselect_navigation">#707070</color>-->
+<!--    <color name="unselect_navigation">#808080</color>-->
+
+
+
+</resources>

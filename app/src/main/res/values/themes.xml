@@ -1,0 +1,214 @@
+<resources xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.SimpleMova" parent="Theme.Material3.DayNight">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorSecondaryVariant">@color/colorAccent</item>
+        <item name="colorOnSecondary">@color/dark_grey</item>
+<!--        <item name="android:textColorPrimary">@color/colorPrimaryText</item>-->
+<!--        <item name="android:textColorSecondary">@color/colorSecondaryText</item>-->
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body1</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryBackground</item>
+        <item name="android:windowBackground">@color/colorPrimaryBackground</item>
+
+        <item name="android:windowContentTransitions">true</item>
+<!--        <item name="android:windowActivityTransitions">true</item>-->
+<!--        <item name="android:windowEnterTransition">@transition/fade_in</item>-->
+<!--        <item name="android:windowExitTransition">@transition/fade_out</item>-->
+<!--        <item name="android:windowSharedElementEnterTransition">@transition/shared_element_transition</item>-->
+<!--        <item name="android:windowSharedElementExitTransition">@transition/shared_element_transition</item>-->
+<!--        <item name="android:windowReenterTransition">@transition/fade_in</item>-->
+<!--        <item name="android:windowReturnTransition">@transition/fade_in</item>-->
+
+    </style>
+
+    <style name="Theme.SimpleMova" parent="Base.Theme.SimpleMova" />
+
+    <style name="Theme.StatusNavigationBar" parent="Theme.SimpleMova">
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="android:navigationBarColor">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <style name="Theme.MainActivity" parent="Theme.SimpleMova">
+        <item name="android:navigationBarColor">@color/white</item>
+<!--        <item name="android:windowBackground">@color/white</item>-->
+    </style>
+
+    <style name="TextAppearance.PrimaryText" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textSize">@dimen/primary_text_size</item>
+    </style>
+
+    <style name="TextAppearance.SecondaryText" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textSize">@dimen/secondary_text_size</item>
+    </style>
+
+    <style name="TextAppearance.AppBarTitle" parent="TextAppearance.PrimaryText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:ellipsize">end</item>
+        <item name="maxLines">1</item>
+        <item name="android:transitionName">@string/app_bar_title_transition</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textSize">@dimen/primary_text_size</item>
+    </style>
+
+    <style name="TextAppearance.SectionTitle" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:layout_marginStart">@dimen/section_title_text_margin_12dp</item>
+        <item name="android:layout_marginEnd">@dimen/section_title_text_margin_12dp</item>
+        <item name="android:layout_marginTop">@dimen/section_title_text_margin_12dp</item>
+        <item name="android:layout_marginBottom">@dimen/section_title_text_margin_6dp</item>
+        <item name="android:textSize">17sp</item>
+<!--        <item name="android:textStyle">bold</item>-->
+    </style>
+
+    <style name="TextAppearance.SubSectionTitle" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:layout_marginStart">@dimen/section_title_text_margin_12dp</item>
+        <item name="android:layout_marginEnd">@dimen/section_title_text_margin_12dp</item>
+        <item name="android:layout_marginBottom">@dimen/section_title_text_margin_6dp</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="CustomOutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.CustomCorners</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.CustomCorners" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.CurvedLayout" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="RoundedBackground" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+        <item name="color">@color/white</item>
+    </style>
+
+    <style name="CurveImage" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12%</item>
+    </style>
+
+    <style name="RoundedImage" parent="">
+        <item name="cornerFamilyTopLeft">rounded</item>
+        <item name="cornerFamilyTopRight">rounded</item>
+        <item name="cornerFamilyBottomLeft">rounded</item>
+        <item name="cornerFamilyBottomRight">rounded</item>
+        <item name="cornerSizeTopLeft">50%</item>
+        <item name="cornerSizeTopRight">50%</item>
+        <item name="cornerSizeBottomLeft">50%</item>
+        <item name="cornerSizeBottomRight">50%</item>
+        <item name="backgroundColor">@color/white</item>
+    </style>
+
+    <style name="IconCurvedBg">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="cardBackgroundColor">@color/transparent</item>
+        <item name="strokeColor">@color/transparent</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="cardCornerRadius">50dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="IconCurvedBg35">
+        <item name="android:layout_width">35dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="cardBackgroundColor">@color/transparent</item>
+        <item name="strokeColor">@color/transparent</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="cardCornerRadius">50dp</item>
+        <item name="cardElevation">0dp</item>
+    </style>
+
+    <style name="CardView.Main">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="strokeColor">@color/transparent</item>
+        <item name="strokeWidth">0dp</item>
+        <item name="android:layout_marginStart">@dimen/card_margin_6dp</item>
+        <item name="android:layout_marginEnd">@dimen/card_margin_6dp</item>
+        <item name="android:layout_marginTop">@dimen/card_margin_6dp</item>
+        <item name="android:layout_marginBottom">@dimen/card_margin_6dp</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius_16dp</item>
+        <item name="cardElevation">@dimen/card_elevation_0_5dp</item>
+    </style>
+
+    <style name="MainTabTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="Divider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.2dp</item>
+        <item name="android:background">#E8E7E7</item>
+    </style>
+
+    <style name="TextAppearance.AppName" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.AmountLabel" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="TextAppearance.AmountValue" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/confirm_green</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="TextAppearance.ConfirmationNote" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/colorSecondaryText</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Chip.Categories" parent="Widget.Material3.Chip.Filter">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="chipMinHeight">36dp</item>
+        <item name="chipBackgroundColor">@color/chip_background_selector</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/chip_text_selector</item>
+        <item name="rippleColor">@color/chip_ripple_selector</item>
+        <item name="checkedIconVisible">true</item>
+        <item name="checkedIcon">@drawable/check_24px</item>
+        <item name="checkedIconTint">?attr/colorOnPrimary</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:checkable">true</item>
+        <item name="android:alpha">0</item>
+        <item name="android:translationX">1000dp</item>
+    </style>
+
+</resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:alpha="0"
+    android:translationY="100dp"
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/custom_item_padding_12dp"
+        android:paddingBottom="@dimen/custom_item_padding_12dp">
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/IconCurvedBg"
+            android:layout_marginEnd="@dimen/icon_margin_12dp"
+            app:cardBackgroundColor="@color/colorPrimary">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/icon_padding_8dp"
+                android:src="@drawable/parcel_box" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/item_name_tv"
+                android:text="Macbook pro M2"
+                style="@style/TextAppearance.PrimaryText" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/item_details_tv"
+                style="@style/TextAppearance.SecondaryText"
+                android:text="NEJ20089934122231 to Paris to Morocco" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/divider"
+        style="@style/Divider" />
+
+</LinearLayout>

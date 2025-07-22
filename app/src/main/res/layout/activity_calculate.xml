@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activity.main.CalculateActivity"
+    android:id="@+id/layout_root">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_view"
+        android:transitionName="@string/app_bar_transition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/app_bar_padding_16dp"
+        app:liftOnScroll="false"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_back"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_width="@dimen/app_bar_icon_24dp"
+                android:layout_height="@dimen/app_bar_icon_24dp"
+                android:src="@drawable/arrow_back_24px"
+                app:tint="?attr/colorOnPrimary" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/app_bar_title"
+                style="@style/TextAppearance.AppBarTitle"
+                android:text="@string/calculate" />
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.SectionTitle"
+                android:text="@string/destination"/>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/CardView.Main">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/card_margin_16dp"
+                    android:orientation="vertical">
+
+                    <include
+                        android:id="@+id/sender_location_view"
+                        layout="@layout/custom_edit_item" />
+
+                    <include
+                        android:id="@+id/receiver_location_view"
+                        layout="@layout/custom_edit_item" />
+
+                    <include
+                        android:id="@+id/approx_weight_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="0dp"
+                        layout="@layout/custom_edit_item" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.SectionTitle"
+                android:layout_marginBottom="0dp"
+                android:text="@string/packaging"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.SubSectionTitle"
+                android:text="@string/what_are_you_sending"/>
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/CardView.Main"
+                app:cardCornerRadius="12dp">
+
+                <LinearLayout android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@drawable/delivery_parcel_large" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="4dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@color/divider_color"/>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        style="@style/TextAppearance.SectionTitle"
+                        android:layout_margin="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/box"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/keyboard_arrow_down_24px"
+                        app:tint="@color/grey" />
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.SectionTitle"
+                android:layout_marginBottom="0dp"
+                android:text="@string/categories"/>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.SubSectionTitle"
+                android:text="@string/what_are_you_sending"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_categories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/chip_group_margin_12dp"
+                app:chipSpacingHorizontal="12dp"
+                app:chipSpacingVertical="0dp"
+                app:singleSelection="true"
+                app:selectionRequired="false"
+                app:singleLine="false">
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Chip.Categories"
+                    android:text="@string/documents" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Chip.Categories"
+                    android:text="@string/glass" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Chip.Categories"
+                    android:text="@string/liquid" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Chip.Categories"
+                    android:text="@string/food" />
+
+                <com.google.android.material.chip.Chip
+                    android:layout_width="wrap_content"
+                    style="@style/Chip.Categories"
+                    android:text="@string/electronic" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Chip.Categories"
+                    android:text="@string/product" />
+
+                <com.google.android.material.chip.Chip
+                    style="@style/Chip.Categories"
+                    android:text="@string/others" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/calculate_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="@dimen/spacing_large"
+                android:text="@string/calculate"
+                app:backgroundTint="@color/button_orange"/>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

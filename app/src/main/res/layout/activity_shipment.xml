@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activity.main.ShipmentActivity"
+    android:id="@+id/layout_root">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_view"
+        android:transitionName="@string/app_bar_transition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:liftOnScroll="false"
+        android:background="@color/colorPrimary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/app_bar_padding_16dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btn_back"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_width="@dimen/app_bar_icon_24dp"
+                android:layout_height="@dimen/app_bar_icon_24dp"
+                android:src="@drawable/arrow_back_24px"
+                app:tint="?attr/colorOnPrimary" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/app_bar_title"
+                style="@style/TextAppearance.AppBarTitle"
+                android:text="@string/shipment_history" />
+
+        </LinearLayout>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:visibility="visible"
+            app:tabGravity="start"
+            app:tabIndicatorColor="@color/button_orange"
+            app:tabRippleColor="?attr/colorControlHighlight"
+            app:tabIndicatorHeight="2.5dp"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/dark_grey"
+            app:tabTextAppearance="@style/MainTabTextStyle"
+            app:tabTextColor="@color/tab_unselected_on_light_bg" />
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.simplemova.ui.widget.CustomRecyclerView
+        android:id="@+id/shipments_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="@dimen/badge_padding_6dp"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        tools:listitem="@layout/custom_shipment_item" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

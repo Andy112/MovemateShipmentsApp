@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.textview.MaterialTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/shipments"
+    android:textSize="20sp"
+    android:alpha="0"
+    android:translationY="100dp"
+    android:padding="@dimen/text_padding_12dp"
+    style="@style/TextAppearance.PrimaryText"/>

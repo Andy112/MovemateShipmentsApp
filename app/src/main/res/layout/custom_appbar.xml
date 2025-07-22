@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="12dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:rotation="90"
+            android:src="@drawable/ic_baseline_arrow_drop_down_24"
+            app:tint="?attr/colorOnPrimary" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="Shipment history"
+            android:textColor="?attr/colorOnPrimary"
+            android:textSize="@dimen/primary_text_size" />
+
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_weight="1"
+        android:background="@color/colorPrimary"
+        android:visibility="visible"
+        app:tabGravity="start"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabRippleColor="?attr/colorControlHighlight"
+        app:tabIndicatorHeight="2.5dp"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/dark_grey"
+        app:tabTextAppearance="@style/MainTabTextStyle"
+        app:tabTextColor="@color/tab_unselected_on_light_bg" />
+
+</com.google.android.material.appbar.AppBarLayout>
