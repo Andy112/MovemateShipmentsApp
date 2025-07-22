@@ -14,6 +14,7 @@ import com.simplemova.activity.extra.BaseActivity;
 public class CalculateActivity extends BaseActivity {
 
     private AppCompatEditText mEtSenderLocation, mEtReceiverLocation, mEtApproxWeight;
+    private View mFormLayout;
     private ChipGroup mChipGroupCategories;
 
     @Override
@@ -22,10 +23,14 @@ public class CalculateActivity extends BaseActivity {
         setContentView(R.layout.activity_calculate);
         setOnApplyWindowInsetsListener();
         initWidgets();
-        super.registerSharedElementTransitionListener(this::animateChipsFromRight);
+        super.registerSharedElementTransitionListener(() -> {
+            animateChipsFromRightToLeft();
+            animateFormFromBottomToTop();
+        });
     }
 
     private void initWidgets() {
+        mFormLayout = findViewById(R.id.layout_form);
         mChipGroupCategories = findViewById(R.id.chip_group_categories);
         findViewById(R.id.calculate_btn).setOnClickListener(v ->
                 startActivity(ConfirmationActivity.class));
@@ -42,10 +47,10 @@ public class CalculateActivity extends BaseActivity {
         return aet;
     }
 
-    private void animateChipsFromRight() {
+    private void animateChipsFromRightToLeft() {
         mChipGroupCategories.postDelayed(() -> {
             final long ANIM_DURATION = 600;
-            final long STAGGER_DELAY = 15;
+            final long STAGGER_DELAY = 5;
 
             for (int i = 0; i < mChipGroupCategories.getChildCount(); i++) {
                 View child = mChipGroupCategories.getChildAt(i);
@@ -60,5 +65,16 @@ public class CalculateActivity extends BaseActivity {
                 }
             }
         }, 500);
+    }
+
+    private void animateFormFromBottomToTop() {
+        if (mFormLayout.getAlpha() < 1) {
+            mFormLayout.animate()
+                    .translationY(0)
+                    .alpha(1f)
+                    .setDuration(600)
+                    .setStartDelay(0)
+                    .start();
+        }
     }
 }

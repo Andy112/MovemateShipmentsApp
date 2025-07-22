@@ -45,6 +45,8 @@
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:visibility="visible"
+            android:alpha="0"
+            android:translationX="50dp"
             app:tabGravity="start"
             app:tabIndicatorColor="@color/button_orange"
             app:tabRippleColor="?attr/colorControlHighlight"

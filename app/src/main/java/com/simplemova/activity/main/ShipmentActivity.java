@@ -16,6 +16,7 @@ import com.simplemova.model.ShipmentStatus;
 import com.simplemova.ui.adapter.ShipmentHistoryAdapter;
 import com.simplemova.ui.widget.CustomRecyclerView;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 public class ShipmentActivity extends BaseActivity {
@@ -37,7 +38,10 @@ public class ShipmentActivity extends BaseActivity {
         setOnApplyWindowInsetsListener();
         initWidgets();
         initTabLayout();
-        super.registerSharedElementTransitionListener(this::initShipmentHistoryAdapter);
+        super.registerSharedElementTransitionListener(() -> {
+                    initShipmentHistoryAdapter();
+                    animateTabLayoutFromRightToLeft();
+                });
     }
 
     private void initWidgets() {
@@ -80,5 +84,14 @@ public class ShipmentActivity extends BaseActivity {
     private void refreshAdapter(String status) {
         List<Shipment> shipments = mDataMgr.sortAndGetShipmentsByStatus(status);
         mShipmentHistoryAdapter.refreshAdapter(shipments);
+    }
+
+    private void animateTabLayoutFromRightToLeft() {
+        mTabLayout.animate()
+                .alpha(1f)
+                .translationX(0f)
+                .setDuration(600)
+                .setStartDelay(100)
+                .start();
     }
 }

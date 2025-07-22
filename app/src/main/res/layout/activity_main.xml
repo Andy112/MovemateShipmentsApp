@@ -200,6 +200,7 @@
                 android:textSize="16sp" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cv_container"
                 style="@style/CardView.Main"
                 android:layout_margin="@dimen/card_margin_12dp">
 

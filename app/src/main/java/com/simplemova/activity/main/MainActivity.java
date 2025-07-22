@@ -25,6 +25,8 @@ import com.simplemova.ui.adapter.AvailableVehiclesAdapter;
 import com.simplemova.ui.widget.CustomRecyclerView;
 import com.simplemova.util.WidgetUtil;
 
+import java.util.Collections;
+
 public class MainActivity extends BaseActivity {
 
     private boolean isExiting = false;
@@ -56,7 +58,7 @@ public class MainActivity extends BaseActivity {
     private MaterialCardView mCardSearchBar;
     private TabLayout mTabLayout;
     private View mContentLayoutContainer;
-    private MaterialCardView mBottomTabContainer;
+    private MaterialCardView mCvContainer, mBottomTabContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,7 @@ public class MainActivity extends BaseActivity {
         mTabLayout = findViewById(R.id.tabs);
         mContentLayoutContainer = findViewById(R.id.content_layout_container);
         mBottomTabContainer = findViewById(R.id.bottom_tab_container);
+        mCvContainer = findViewById(R.id.cv_container);
         mCardSearchBar = findViewById(R.id.card_search_bar);
         findViewById(R.id.layout_search_bar).setOnClickListener(v -> gotoSearchActivity());
         findViewById(R.id.btn_add_stop).setOnClickListener(v -> {});
@@ -116,7 +119,11 @@ public class MainActivity extends BaseActivity {
                         Intent intent = new Intent(MainActivity.this, targetActivity);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(intent, options.toBundle());
-//                        mHandler.post(() -> slideOutBottomContainer());
+                        mHandler.postDelayed(() -> {
+                            slideOutBottomContainer();
+                            hideContentContainer();
+                            mAvailableVehiclesAdapter.refreshAdapter(Collections.emptyList());
+                        }, 1000);
                     }, LAUNCH_DELAY_MS);
                 }
             }
@@ -136,6 +143,7 @@ public class MainActivity extends BaseActivity {
     protected void onResume() {
         super.onResume();
         slideInBottomContainer();
+        showContentContainer();
         mHandler.postDelayed(() -> {
             mTabLayout.getTabAt(0).select();
 
@@ -216,6 +224,24 @@ public class MainActivity extends BaseActivity {
                 .start();
     }
 
+    private void showContentContainer() {
+        if (mCvContainer.getAlpha() < 1) {
+            mCvContainer.animate()
+                    .alpha(1f)
+                    .setDuration(800)
+                    .setStartDelay(0)
+                    .start();
+        }
+    }
+
+    private void hideContentContainer() {
+        mCvContainer.animate()
+                .alpha(0f)
+                .setDuration(EXIT_DURATION)
+                .setStartDelay(BUFFER_DELAY_BEFORE_CONTENT)
+                .start();
+    }
+
 
 
     private void animateEnter() {
@@ -257,15 +283,14 @@ public class MainActivity extends BaseActivity {
     }
 
     private void animateExitAndFinish() {
-        if (isExiting) return; // Prevent multiple calls
+        if (isExiting) return;
         isExiting = true;
 
-        // Animate AppBar: Slide up and fade out
         mAppBarView.animate()
-                .translationY(-mAppBarView.getHeight()) // Slide up beyond top
+                .translationY(-mAppBarView.getHeight())
                 .alpha(0f)
                 .setDuration(EXIT_DURATION)
-                .setStartDelay(STAGGER_DELAY * 2) // Start later for staggered exit
+                .setStartDelay(STAGGER_DELAY * 2)
                 .start();
 
         // Animate Content (Middle Section): Fade out
